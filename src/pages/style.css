@@ -1,0 +1,277 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.box {
+  width: 75%;
+  height: 700px;
+  margin-top: 5%;
+  /* transform: translate(-50%, -50%); */
+  border-radius: 16px;
+  border: 2px solid #000;
+}
+
+.bottom-button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0;
+  justify-content: flex-start;
+}
+
+.bottom-button {
+  cursor: pointer;
+  height: 50px;
+  width: 478px;
+  border: 1px solid #000;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.bottom-button:hover {
+  background: #dadada;
+  transition: 0.5s ease;
+}
+
+.bottom-button:first-child {
+  border-radius: 0px 0px 0px 16px;
+}
+
+.bottom-button:last-child {
+  border-radius: 0px 0px 16px 0px;
+}
+
+.bottom-button-text {
+  color: #000;
+}
+
+.grid-container {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr); /* 10 boxes per row */
+  grid-auto-rows: 100px; /* Fixed height for each row */
+  gap: 30px;
+  max-height: calc(120px * 3 + 20px); /* Max height for 3 rows plus gap */
+  overflow-y: scroll; /* Hide vertical overflow */
+  overflow-x: auto; /* Horizontal scrollbar for overflow */
+  width: 100%; /* Adjust the width as needed */
+  padding: 10px;
+  box-sizing: border-box; /* Include padding in the element's width */
+}
+
+.grid-box {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+}
+
+.grid-box:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.5s ease;
+}
+
+.grid-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  gap: 20px;
+}
+
+.filter-button {
+  text-align: center;
+  height: 30px;
+  border-radius: 16px;
+  width: 100px;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-button-selected {
+  background-color: #aaaaaa;
+  text-align: center;
+  height: 30px;
+  border-radius: 16px;
+  width: 100px;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-button:hover {
+  cursor: pointer;
+  background: #dadada;
+  transition: 0.5s ease;
+}
+
+
+.create-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  gap: 20px;
+}
+
+.create-button {
+  text-align: center;
+  height: 40px;
+  border-radius: 16px;
+  width: 150px;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-button:hover {
+  cursor: pointer;
+  background: #dadada;
+  transition: 0.5s ease;
+}
+
+.schedule-container {
+  width: 100%;
+  overflow: auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.schedule {
+  display: grid;
+  grid-template-columns: 150px repeat(7, 1fr);
+  grid-template-rows: 50px repeat(4, 1fr);
+  gap: 1px;
+}
+
+.header {
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.time-slot {
+  background-color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.cell {
+  border: 1px solid #ddd;
+  background-color: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  cursor: pointer; /* Indicate that it's clickable */
+  text-align: center;
+}
+
+.cell:hover {
+  background-color: #f0f0f0; /* Optional: Highlight on hover */
+}
+
+
+.grocery-container-parent {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.grocery-container {
+  display: flex;
+  border: 1px solid #000;
+  width: 400px;
+  flex-direction: column;
+  margin-top: 50px;
+  gap: 5px;
+  overflow-y: scroll;
+  height: 400px;
+}
+
+.ingredient {
+  cursor: pointer;
+}
+
+.crossout-div {
+  padding: 5px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.crossed-out {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.day-button-container {
+  display: flex;
+  gap: 50px;
+  margin-top: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-button {
+  cursor: pointer;
+  height: 40px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+  border-radius: 16px;
+}
+
+
+.day-button:hover {
+  cursor: pointer;
+  background: #dadada;
+  transition: 0.5s ease;
+}
+
+.form-container-parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+  display: flex;
+  margin-top: 100px;
+  border: 1px solid #000;
+  height: 500px;
+  flex-direction: column;
+
+  width: 500px;
+}
