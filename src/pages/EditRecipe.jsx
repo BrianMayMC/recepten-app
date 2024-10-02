@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 
-const NewRecipe = () => {
+const EditRecipe = () => {
 	const [name, setName] = useState("");
 	const [dayType, setDayType] = useState("");
 	const [recipe, setRecipe] = useState("");
@@ -184,4 +184,4 @@ const NewRecipe = () => {
 	);
 };
 
-export default NewRecipe;
+export default EditRecipe;

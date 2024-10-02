@@ -1,29 +1,13 @@
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.box {
-  width: 75%;
-  height: 700px;
-  margin-top: 5%;
-  /* transform: translate(-50%, -50%); */
-  border-radius: 16px;
-  border: 2px solid #000;
-}
 
 .bottom-button-container {
   display: flex;
+  justify-content: center;
+  margin-top: 150px;
   flex-direction: row;
-  align-items: flex-end;
-  position: absolute;
-  bottom: 0;
-  justify-content: flex-start;
 }
 
 .bottom-button {
+  align-self: flex-end;
   cursor: pointer;
   height: 50px;
   width: 478px;
@@ -51,20 +35,58 @@
 }
 
 .grid-container {
-  margin-top: 30px;
   display: grid;
-  grid-template-columns: repeat(10, 1fr); /* 10 boxes per row */
-  grid-auto-rows: 100px; /* Fixed height for each row */
-  gap: 30px;
-  max-height: calc(120px * 3 + 20px); /* Max height for 3 rows plus gap */
-  overflow-y: scroll; /* Hide vertical overflow */
-  overflow-x: auto; /* Horizontal scrollbar for overflow */
-  width: 100%; /* Adjust the width as needed */
-  padding: 10px;
-  box-sizing: border-box; /* Include padding in the element's width */
+  grid-template-columns: repeat(auto-fit, minmax(110px, 22fr));
+  max-height: 110px;
+  overflow-y: scroll;
+  gap: 20px;
+  padding: 20px;
+  justify-items: center;
 }
 
 .grid-box {
+  text-align: center;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.grid-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.grid-box img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.item-name {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* .grid-container {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr); 
+  grid-auto-rows: 100px; 
+  gap: 30px;
+  max-height: calc(120px * 3 + 20px); 
+  overflow-y: scroll; 
+  overflow-x: auto; 
+  width: 100%; 
+  padding: 10px;
+  box-sizing: border-box;
+} */
+
+/* .grid-box {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
@@ -84,7 +106,7 @@
   height: 100%;
   object-fit: cover;
   border-radius: 16px;
-}
+} */
 
 .filter-container {
   display: flex;
@@ -274,4 +296,22 @@
   flex-direction: column;
 
   width: 500px;
+}
+
+.option-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.option-button-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }

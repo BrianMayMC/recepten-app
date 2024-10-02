@@ -1,27 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CrossOutDiv from "../components/CrossOutDiv";
 
 const GroceryListPage = () => {
-	const [ingr, setIngr] = useState([
-		"100g kip",
-		"100g rijst",
-		"1 aardappel",
-		"1 ui",
-		"1 visstick",
-		"1 blabla",
-		"1 asdff",
-		"1 vidfsadfsadfsafsstick",
-		"1 visstfdfsfaick",
-		"1 vissadfsdafstick",
-		"1 vissdsafdsafdsatick",
-		"1 vissfdsafdasfasdftick",
-		"1 visdsafsafdsafstick",
-		"1 visstfffick",
-		"1 vissfffdsfsfasftick",
-		"1 vissdasfadsfsadtick",
-	]);
+	const [ingr, setIngr] = useState([]);
 
 	const [filter, setFilter] = useState("sun-wed");
+
+	useEffect(() => {
+		fetch("http://localhost:8080/api/schedule/getingredients/" + filter)
+			.then((response) => {
+				console.log(response);
+				return response.json();
+			})
+			.then((response) => {
+				console.log(response);
+				setIngr(response);
+			});
+	}, [filter]);
+
 	return (
 		<div className="container">
 			<div className="box">

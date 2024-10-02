@@ -1,212 +1,77 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import GridWithSlider from "../components/GridWithSlider";
+import {
+	Button,
+	FormControl,
+	InputLabel,
+	MenuItem,
+	Select,
+} from "@mui/material";
 
 const RecipesPage = () => {
-	const [recipes, setRecipes] = useState([
-		{
-			id: 1,
-			name: "Kip Siam",
-			type: "ontbijt",
-			image: "https://i.imgur.com/Q3JXx4Z.png",
-			ingredients: [
-				"100g kip",
-				"100g rijst",
-				"1 aardappel",
-				"1 ui",
-				"1 visstick",
-			],
-			recipe: "kook alles en eet het op",
-		},
-		{
-			id: 2,
-			name: "Kip Siam",
-			type: "lunch",
-			image: "https://i.imgur.com/Q3JXx4Z.png",
-			ingredients: [
-				"100g kip",
-				"100g rijst",
-				"1 aardappel",
-				"1 ui",
-				"1 visstick",
-			],
-			recipe: "kook alles en eet het op",
-		},
-		{
-			id: 3,
-			name: "Kip Siam",
-			type: "lunch",
-			image: "https://i.imgur.com/Q3JXx4Z.png",
-			ingredients: [
-				"100g kip",
-				"100g rijst",
-				"1 aardappel",
-				"1 ui",
-				"1 visstick",
-			],
-			recipe: "kook alles en eet het op",
-		},
-		{
-			id: 4,
-			name: "Kip Siam",
-			type: "lunch",
-			image: "https://i.imgur.com/Q3JXx4Z.png",
-			ingredients: [
-				"100g kip",
-				"100g rijst",
-				"1 aardappel",
-				"1 ui",
-				"1 visstick",
-			],
-			recipe: "kook alles en eet het op",
-		},
-		{
-			id: 5,
-			name: "Kip Siam",
-			type: "diner",
-			image: "https://i.imgur.com/Q3JXx4Z.png",
-			ingredients: [
-				"100g kip",
-				"100g rijst",
-				"1 aardappel",
-				"1 ui",
-				"1 visstick",
-			],
-			recipe: "kook alles en eet het op",
-		},
-		{
-			id: 6,
-			name: "Kip Siam",
-			type: "dessert",
-			image: "https://i.imgur.com/Q3JXx4Z.png",
-			ingredients: [
-				"100g kip",
-				"100g rijst",
-				"1 aardappel",
-				"1 ui",
-				"1 visstick",
-			],
-			recipe: "kook alles en eet het op",
-		},
-		{
-			id: 7,
-			name: "Kip Siam",
-			type: "lunch",
-			image: "https://i.imgur.com/Q3JXx4Z.png",
-			ingredients: [
-				"100g kip",
-				"100g rijst",
-				"1 aardappel",
-				"1 ui",
-				"1 visstick",
-			],
-			recipe: "kook alles en eet het op",
-		},
-		{
-			id: 8,
-			name: "Kip Siam",
-			type: "lunch",
-			image: "https://i.imgur.com/Q3JXx4Z.png",
-			ingredients: [
-				"100g kip",
-				"100g rijst",
-				"1 aardappel",
-				"1 ui",
-				"1 visstick",
-			],
-			recipe: "kook alles en eet het op",
-		},
-		{
-			id: 9,
-			name: "Kip Siam",
-			type: "diner",
-			image: "https://i.imgur.com/Q3JXx4Z.png",
-			ingredients: [
-				"100g kip",
-				"100g rijst",
-				"1 aardappel",
-				"1 ui",
-				"1 visstick",
-			],
-			recipe: "kook alles en eet het op",
-		},
-		{
-			id: 10,
-			name: "Kip Siam",
-			type: "ontbijt",
-			image: "https://i.imgur.com/Q3JXx4Z.png",
-			ingredients: [
-				"100g kip",
-				"100g rijst",
-				"1 aardappel",
-				"1 ui",
-				"1 visstick",
-			],
-			recipe: "kook alles en eet het op",
-		},
-		{
-			id: 11,
-			name: "Kip Siam",
-			type: "lunch",
-			image: "https://i.imgur.com/Q3JXx4Z.png",
-			ingredients: [
-				"100g kip",
-				"100g rijst",
-				"1 aardappel",
-				"1 ui",
-				"1 visstick",
-			],
-			recipe: "kook alles en eet het op",
-		},
-	]);
+	const [recipes, setRecipes] = useState([]);
 
-	const [filter, setFilter] = useState("ontbijt");
+	const [filter, setFilter] = useState("ONTBIJT");
 
-	function getFilteredRecipes() {
-		return recipes.filter((item) => item.type === filter);
-	}
+	const [selectedOption, setSelectOption] = useState(null);
+
+	useEffect(() => {
+		fetch("http://localhost:8080/api/recipe/" + filter)
+			.then((res) => res.json())
+			.then((json) => {
+				setRecipes(json);
+				setSelectOption(json[0]);
+			});
+	}, [filter]);
+
+	const handleDelete = () => {};
+
+	const handleEdit = () => {
+		window.location.assign("/editrecipe/" + selectedOption.id);
+	};
 
 	return (
 		<div className="container">
 			<div className="box">
-				<GridWithSlider items={getFilteredRecipes()} />
+				<GridWithSlider items={recipes} />
 				<div className="filter-container">
 					<div
 						className={`${
-							filter !== "ontbijt" ? "filter-button" : "filter-button-selected"
+							filter !== "ONTBIJT" ? "filter-button" : "filter-button-selected"
 						}`}
 						onClick={() => {
-							setFilter("ontbijt");
+							setFilter("ONTBIJT");
 						}}
 					>
 						Ontbijt
 					</div>
 					<div
 						className={`${
-							filter !== "lunch" ? "filter-button" : "filter-button-selected"
+							filter !== "LUNCH" ? "filter-button" : "filter-button-selected"
 						}`}
 						onClick={() => {
-							setFilter("lunch");
+							setFilter("LUNCH");
 						}}
 					>
 						Lunch
 					</div>
 					<div
 						className={`${
-							filter !== "diner" ? "filter-button" : "filter-button-selected"
+							filter !== "DINER" ? "filter-button" : "filter-button-selected"
 						}`}
 						onClick={() => {
-							setFilter("diner");
+							setFilter("DINER");
 						}}
 					>
 						Diner
 					</div>
 					<div
 						className={`${
-							filter !== "dessert" ? "filter-button" : "filter-button-selected"
+							filter !== "DESSERT" ? "filter-button" : "filter-button-selected"
 						}`}
 						onClick={() => {
-							setFilter("dessert");
+							setFilter("DESSERT");
 						}}
 					>
 						Dessert
@@ -221,30 +86,67 @@ const RecipesPage = () => {
 					<div className="create-button">Nieuw Recept</div>
 				</div>
 
-				<div className="bottom-button-container">
-					<div
-						className="bottom-button"
-						onClick={() => {
-							window.location.assign("/");
-						}}
-					>
-						<div className="bottom-button-text">Alle Gerechten</div>
+				<div className="bottom-button-wrapper">
+					<div className="bottom-button-container">
+						<div
+							className="bottom-button"
+							onClick={() => {
+								window.location.assign("/");
+							}}
+						>
+							<div className="bottom-button-text">Alle Gerechten</div>
+						</div>
+						<div
+							className="bottom-button"
+							onClick={() => {
+								window.location.assign("/boodschappenlijstje");
+							}}
+						>
+							<div className="bottom-button-text">Boodschappenlijstje</div>
+						</div>
+						<div
+							className="bottom-button"
+							onClick={() => {
+								window.location.assign("/weekmenu");
+							}}
+						>
+							<div className="bottom-button-text">Weekmenu</div>
+						</div>
 					</div>
-					<div
-						className="bottom-button"
-						onClick={() => {
-							window.location.assign("/boodschappenlijstje");
-						}}
-					>
-						<div className="bottom-button-text">Boodschappenlijstje</div>
-					</div>
-					<div
-						className="bottom-button"
-						onClick={() => {
-							window.location.assign("/weekmenu");
-						}}
-					>
-						<div className="bottom-button-text">Weekmenu</div>
+				</div>
+				<div className="option-container">
+					<FormControl>
+						<InputLabel id="option-select-label">Selecteer optie</InputLabel>
+						<Select
+							value={selectedOption}
+							labelId="option-select-label"
+							label="Selecteer optie"
+							placeholder="Selecteer optie"
+							onChange={(e) => setSelectOption(e.target.value)}
+							style={{ minWidth: "200px" }}
+						>
+							{recipes.map((recipe) => (
+								<MenuItem value={recipe.name}>{recipe.name}</MenuItem>
+							))}
+						</Select>
+					</FormControl>
+					<div className="option-button-container">
+						<Button
+							variant="contained"
+							onClick={() => {
+								handleDelete();
+							}}
+						>
+							Verwijderen
+						</Button>
+						<Button
+							variant="contained"
+							onClick={() => {
+								handleEdit();
+							}}
+						>
+							Aanpassen
+						</Button>
 					</div>
 				</div>
 			</div>

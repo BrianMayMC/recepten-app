@@ -1,0 +1,53 @@
+.app {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+}
+
+nav button {
+  background-color: #fff;
+  color: #4CAF50;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+nav button:hover {
+  background-color: #ddd;
+}
+
+.ingredient-section {
+  margin: 20px 0;
+}
+
+.ingredient-section h2 {
+  color: #4CAF50;
+}
+
+.ingredient-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ingredient-section li {
+  background-color: #fff;
+  margin: 5px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+}
+
+.ingredient-section .icon {
+  margin-right: 10px;
+}
